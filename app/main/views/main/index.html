@@ -1,0 +1,46 @@
+<:Title>
+  Home
+
+<:Body>
+  <h1>Home</h1>
+  {{ if Volt.current_user }}
+    <div class="row">
+      <ul>
+        {{ store.messages.each do |message| }}
+        <li><strong>{{ message.user.name }}</strong>: {{ message.text }}</li>
+        {{ end }}
+      </ul>
+
+      <div class="col-md-4">
+        {{ _users.each do |user| }}
+          {{ if user._id != Volt.current_user_id }}
+            <div class="contact {{ if params._user_id == user._id }} active {{ end }}" e-click="select_conversation(user)">
+              {{user._name}}
+            </div>
+          {{ end }}
+        {{ end }}
+      </div>
+
+      {{ if params._user_id }}
+        <div class="col-md-8 well conversation">
+          <form e-submit="send_message" role="form">
+            <div class="form-group">
+              <input class="form-control" type="text" placeholder="Write a message" value="{{ page._new_message }}" />
+              <button type="submit" class="btn btn-primary pull-right">Submit</button>
+            </div>
+          </form>
+        </div>
+      {{ end }}
+    </div>
+  {{ else }}
+    <p>This is a sample application built with Volt to demonstrate its real-time capabilities. Please log in to access it.</p>
+  {{ end }}
+
+  <div class="contact {{ if params._user_id == user._id }} active {{ end }}" e-click="select_conversation(user)">
+    {{user._name}}
+    {{ if unread_notifications_from(user).count > 0 }}
+    <span class="badge">
+      {{ unread_notifications_from(user).count }}
+    </span>
+    {{ end }}
+  </div>
