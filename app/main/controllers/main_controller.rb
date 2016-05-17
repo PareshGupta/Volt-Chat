@@ -6,12 +6,7 @@ module Main
 
     def index
       users = store._users
-      # Add code for when the index view is loaded
     end
-
-    # def about
-    #   # Add code for when the about view is loaded
-    # end
 
     def send_message
       unless page._new_message.strip.empty?
@@ -24,9 +19,9 @@ module Main
     def select_conversation(user)
       params._user_id = user._id
       unread_notifications_from(user).then do |results|
-      results.each do |notification|
-        _notifications.delete(notification)
-      end
+        results.each do |notification|
+          _notifications.delete(notification)
+        end
       end
       page._new_message = ''
     end
