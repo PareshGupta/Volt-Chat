@@ -2,16 +2,11 @@
   Chat History
 
 <:Body>
-  <h2>Chat History</h2>
   {{ if Volt.current_user }}
-    <div class="row">
-      <ul>
-        {{ store.messages.each do |message| }}
-        <li><strong>{{ message.user.name }}</strong>: {{ message.text }}</li>
-        {{ end }}
-      </ul>
 
+    <div class="row">
       <div class="col-md-4">
+        <h3>User's List</h3>
         {{ _users.each do |user| }}
           {{ if user._id != Volt.current_user_id }}
             <div class="contact {{ if params._user_id == user._id }} active {{ end }}" e-click="select_conversation(user)">
@@ -21,21 +16,36 @@
         {{ end }}
       </div>
 
-      {{ if params._user_id }}
-        <div class="col-md-8 well conversation">
+      <div class="col-md-8 message-container">
+        <h3>Chat Coversation</h3>
+        <ul class='chat-history-list'>
+          {{ store.messages.each do |message| }}
+          <li><strong>{{ message.user._name }}</strong>: {{ message.text }}</li>
+          {{ end }}
+        </ul>
+
+        <hr/>
+
+        {{ if params._user_id }}
           <form e-submit="send_message" role="form">
             <div class="form-group">
-              <input class="form-control" type="text" placeholder="Write a message" value="{{ page._new_message }}" />
-              <button type="submit" class="btn btn-primary pull-right">Submit</button>
+              <div class="col-md-10">
+                <input class="form-control" type="text" placeholder="Write a message" value="{{ page._new_message }}" />
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
             </div>
           </form>
-        </div>
-      {{ end }}
+        {{ end }}
+      </div>
     </div>
+
   {{ else }}
+
     <p>This is a sample application built with Volt to demonstrate its real-time capabilities. Please log in to access it.</p>
+
   {{ end }}
 
+<!--
   <div class="contact {{ if params._user_id == user._id }} active {{ end }}" e-click="select_conversation(user)">
     {{user._name}}
     {{ if unread_notifications_from(user).count > 0 }}
@@ -44,3 +54,4 @@
     </span>
     {{ end }}
   </div>
+ -->
