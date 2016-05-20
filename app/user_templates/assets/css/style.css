@@ -1,0 +1,25 @@
+.user-dropdown {
+  width: 200px;
+  text-align: center;
+}
+
+/* profile page */
+
+.profile-pic-container {
+  border-right: 1px solid #ececec;
+}
+
+.profile-page-image {
+  width: 300px;
+}
+
+.profile-details-container {
+  height: 300px;
+  border: 1px solid #efefef;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.profile-details-container b {
+  display: block;
+}

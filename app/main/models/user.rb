@@ -5,8 +5,13 @@ class User < Volt::User
   # in config/app.rb
   field login_field
   field :name
+  field :bio
+  field :contact_number
+  field :education
 
   validate login_field, unique: true, length: 8
   validate :email, email: true
+
+  attachment :picture
 
 end

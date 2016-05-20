@@ -37,7 +37,8 @@
 -->
       <ul class="nav navbar-nav navbar-right">
         {{ if Volt.current_user }}
-          <:user_templates:menu />
+          {{ view 'user_templates/menu' }}
+          <!-- <:user_templates:menu /> -->
         {{ else }}
           <li><a href="/login">Sign In</a></li>
         {{ end }}

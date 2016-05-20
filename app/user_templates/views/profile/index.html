@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="col-md-4 profile-pic-container">
+       <img src="{{ asset_url('../../assets/images/default_avatar.png') }}" width="300px" class="profile-page-image">
+    </div>
+
+    <div class="col-md-offset-1 col-md-5 profile-details-container">
+      <b>Name: {{ @current_user.name }}</b>
+      <b>Email: {{ @current_user.email }}</b>
+      <b>Bio: {{ @current_user.bio }}</b>
+    </div>
+
+    <div class="col-md-2">
+      <a href="/edit" class="btn btn-primary">Edit Profile</a>
+    </div>
+  </div>
+</div>

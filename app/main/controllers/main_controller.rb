@@ -10,9 +10,10 @@ module Main
 
     def send_message
       unless page._new_message.strip.empty?
-      store.messages << { text: page._new_message }
-      # _notifications << { sender_id: Volt.current_user._id, receiver_id: params._user_id }
-      page._new_message = ''
+        store.messages << { text: page._new_message }
+        # _notifications << { sender_id: Volt.current_user._id, receiver_id: params._user_id }
+        page._new_message = ''
+        flash._successes << 'Message successfully sent.'
       end
     end
 
